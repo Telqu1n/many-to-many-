@@ -8,8 +8,7 @@ class student(models.Model):
   email = models.EmailField(max_length=50)
   phone = models.CharField(max_length=15)
   address = models.TextField()
-  teacher = models.ManyToManyField('teacher', related_name='students')
-
+  
   def __str__(self):
     return self.first_name
 
@@ -20,6 +19,7 @@ class teacher(models.Model):
   email = models.EmailField(max_length=50)
   phone = models.CharField(max_length=15)
   address = models.TextField()
+  student = models.ManyToManyField('student', related_name='teachers')
   
   def __str__(self):
     return self.first_name
